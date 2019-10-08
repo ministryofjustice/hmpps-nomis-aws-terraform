@@ -139,6 +139,14 @@ pipeline {
           }
         }
 
+        stage('Delius Peering Connection') {
+          steps {
+            script {
+              do_terraform(project.config, environment_name, project.nomis, 'peering-connection')
+            }
+          }
+        }
+
     }
 
     post {
