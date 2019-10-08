@@ -155,7 +155,7 @@ pipeline {
           }
         }
 
-        stage('Delius Nat gateway') {
+        stage('Nat gateway') {
           steps {
             script {
               do_terraform(project.config, environment_name, project.nomis, 'natgateway')
@@ -163,7 +163,15 @@ pipeline {
           }
         }
 
-        stage('Delius Security Groups') {
+        stage('Routes') {
+          steps {
+            script {
+              do_terraform(project.config, environment_name, project.nomis, 'routes')
+            }
+          }
+        }
+
+        stage('Security Groups') {
           steps {
             script {
               do_terraform(project.config, environment_name, project.nomis, 'security-groups')
