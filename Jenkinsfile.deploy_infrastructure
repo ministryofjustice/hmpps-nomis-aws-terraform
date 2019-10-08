@@ -139,7 +139,7 @@ pipeline {
           }
         }
 
-        stage('Delius Peering Connection') {
+        stage('Peering Connection') {
           steps {
             script {
               do_terraform(project.config, environment_name, project.nomis, 'peering-connection')
@@ -147,10 +147,18 @@ pipeline {
           }
         }
 
-        stage('Delius Internetgateway') {
+        stage('Internet gateway') {
           steps {
             script {
               do_terraform(project.config, environment_name, project.nomis, 'internetgateway')
+            }
+          }
+        }
+
+        stage('Delius Nat gateway') {
+          steps {
+            script {
+              do_terraform(project.config, environment_name, project.nomis, 'natgateway')
             }
           }
         }
