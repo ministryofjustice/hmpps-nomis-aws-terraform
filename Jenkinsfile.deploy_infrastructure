@@ -147,6 +147,14 @@ pipeline {
           }
         }
 
+        stage('Delius Internetgateway') {
+          steps {
+            script {
+              do_terraform(project.config, environment_name, project.nomis, 'internetgateway')
+            }
+          }
+        }
+
     }
 
     post {
