@@ -24,8 +24,9 @@ terragrunt = {
       ]
 
       arguments = [
-        "-var-file=${get_parent_tfvars_dir()}/env_configs/${get_env("TG_COMMON_DIRECTORY","common")}/common.tfvars",
+        "-var-file=${get_parent_tfvars_dir()}/env_configs/common/common.tfvars",
         "-var-file=${get_parent_tfvars_dir()}/env_configs/${get_env("TG_ENVIRONMENT_NAME", "integration")}/${get_env("TG_ENVIRONMENT_NAME", "integration")}.tfvars",
+        "-var-file=${get_parent_tfvars_dir()}/env_configs/${get_env("TG_ENVIRONMENT_NAME", "ENVIRONMENT")}/sub-projects/nomis.tfvars",
       ]
     }
   }
