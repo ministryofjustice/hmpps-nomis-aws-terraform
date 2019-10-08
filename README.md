@@ -44,6 +44,32 @@ TARGET_DIR=env_configs
 git clone --depth 1 -b "${CONFIG_BRANCH}" git@github.com:ministryofjustice/hmpps-env-configs.git "${TARGET_DIR}"
 ```
 
+## Running locally
+The preferred method of running this code is to commit, push and let Jenkins do a deployment.
+However, you can also run individual configurations locally.
+First make sure you have seamless terminal access to AWS CLI using MFA, and have pulled the mojdigitalstudio/hmpps-terraform-builder:latest docker image.
+
+You will also need to have the hmpps-env-configs repo cloned alongside this one. 
+Start from the shared parent directory of these 2 repos.
+
+```docker run -it --rm -v $(pwd)/hmpps-nomis-aws-terraform:/home/tools/data -v $(pwd)/hmpps-env-configs:/home/tools/data/env_configs -v ~/.aws:/home/tools/.aws -e BUILD_TAG=local -e AWS_PROFILE=mfa mojdigitalstudio/hmpps-terraform-builder:latest bash```
+
+N.B. Running with this command will build resources tagged with a build_tag tag of 'local', to distinguish them from versioned resources put in by Jenkins.
+
+Once inside the container run the following, interpolating your desired environment name (e.g. nomis-dev) and the configuration directory name (e.g. vpc):
+
+```source env_configs/<environment>/<environment>.properties```
+
+```cd <configuration>```
+
+```rm -rf .terraform; terragrunt init```
+
+```terragrunt plan -out tf.plan```
+
+Check the plan looks sane, and if it is then run it
+
+```terragrunt apply tf.plan```
+
 ## Run order
 
 Start with VPC
