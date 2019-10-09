@@ -179,6 +179,14 @@ pipeline {
           }
         }
 
+        stage('Persistent eip') {
+          steps {
+            script {
+              do_terraform(project.config, environment_name, project.nomis, 'persistent-eip')
+            }
+          }
+        }
+
         stage('S3 - OracleDB Backups') {
           steps {
             script {
