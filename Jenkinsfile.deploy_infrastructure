@@ -195,6 +195,14 @@ pipeline {
           }
         }
 
+        stage('Keys and Profiles') {
+          steps {
+            script {
+              do_terraform(project.config, environment_name, project.nomis, 'key_profile')
+            }
+          }
+        }
+
     }
 
     post {

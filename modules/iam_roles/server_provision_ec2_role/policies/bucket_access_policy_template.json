@@ -1,0 +1,62 @@
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Sid": "listAllBuckets",
+      "Effect": "Allow",
+      "Action": [
+        "s3:ListAllMyBuckets",
+        "s3:GetBucketLocation"
+      ],
+      "Resource": [
+        "arn:aws:s3:::*"
+      ]
+    },
+    {
+      "Sid": "allowAccessToDependenciesBucket",
+      "Action": [
+        "s3:Get*",
+        "s3:List*"
+      ],
+      "Effect": "Allow",
+      "Resource": [
+        "${dependencies_bucket_arn}",
+        "${dependencies_bucket_arn}/*"
+      ]
+    },
+    {
+      "Sid": "allowAccessToOracleDBBackupBucket",
+      "Effect": "Allow",
+      "Action": [
+        "s3:*"
+      ],
+      "Resource": [
+        "${s3_oracledb_backups_arn}",
+        "${s3_oracledb_backups_arn}/*"
+      ]
+    },
+    {
+      "Sid": "allowAccessToLDAPBackupBucket",
+      "Effect": "Allow",
+      "Action": [
+        "s3:*"
+      ],
+      "Resource": [
+        "${s3_ldap_backups_arn}",
+        "${s3_ldap_backups_arn}/*"
+      ]
+    },
+    {
+      "Sid": "allowAccessToMigrationBucket",
+      "Effect": "Allow",
+      "Action": [
+        "s3:Get*",
+        "s3:List*"
+      ],
+      "Resource": [
+        "${migration_bucket_arn}",
+        "${migration_bucket_arn}/*"
+      ]
+    }
+  ]
+}
