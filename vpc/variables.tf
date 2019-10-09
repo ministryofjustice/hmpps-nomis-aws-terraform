@@ -25,7 +25,7 @@ variable "region" {
 }
 
 variable "project_name" {
-  description = "The project name - delius-core"
+  description = "The project name - nomis"
   type        = "string"
 }
 

@@ -179,6 +179,22 @@ pipeline {
           }
         }
 
+        stage('S3 - OracleDB Backups') {
+          steps {
+            script {
+              do_terraform(project.config, environment_name, project.nomis, 's3/oracledb-backups')
+            }
+          }
+        }
+
+        stage('S3 - LDAP Backups') {
+          steps {
+            script {
+              do_terraform(project.config, environment_name, project.nomis, 's3/ldap-backups')
+            }
+          }
+        }
+
     }
 
     post {
