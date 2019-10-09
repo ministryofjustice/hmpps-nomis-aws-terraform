@@ -219,6 +219,14 @@ pipeline {
           }
         }
 
+        stage('Application Nomis') {
+          steps {
+            script {
+              do_terraform(project.config, environment_name, project.nomis, 'application/nomis')
+            }
+          }
+        }
+
     }
 
     post {
