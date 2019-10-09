@@ -203,6 +203,14 @@ pipeline {
           }
         }
 
+        stage('Database') {
+          steps {
+            script {
+              do_terraform(project.config, environment_name, project.nomis, 'database_failover')
+            }
+          }
+        }
+
     }
 
     post {
