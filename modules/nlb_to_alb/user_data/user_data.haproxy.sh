@@ -46,7 +46,7 @@ cat << EOF > ~/requirements.yml
 EOF
 
 /usr/bin/curl -o ~/users.yml https://raw.githubusercontent.com/ministryofjustice/hmpps-delius-ansible/master/group_vars/${bastion_inventory}.yml
-/usr/bin/curl -o ~/nomis.yml https://raw.githubusercontent.com/ministryofjustice/hmpps-env-configs/master/${route53_sub_domain}/ansible/group_vars/all.yml
+/usr/bin/curl -o ~/nomis.yml https://raw.githubusercontent.com/ministryofjustice/hmpps-env-configs/nomis/${route53_sub_domain}/ansible/group_vars/all.yml
 
 cat << EOF > ~/bootstrap.yml
 ---
