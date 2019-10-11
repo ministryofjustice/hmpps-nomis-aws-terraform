@@ -60,7 +60,7 @@ module "nomis" {
 
   app_bootstrap_name         = "hmpps-nomis-bootstrap"
   app_bootstrap_src          = "https://github.com/ministryofjustice/hmpps-nomis-bootstrap"
-  app_bootstrap_version      = "master"
+  app_bootstrap_version      = "creation"
   app_bootstrap_initial_role = "nomis"
 
   ansible_vars = {

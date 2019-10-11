@@ -100,7 +100,6 @@ cat << EOF > ~/bootstrap.yml
 EOF
 
 # get ssm parameters
-# TODO replace project name with sub-project name
 PARAM=$(aws ssm get-parameters \
 --region eu-west-2 \
 --with-decryption --name \
