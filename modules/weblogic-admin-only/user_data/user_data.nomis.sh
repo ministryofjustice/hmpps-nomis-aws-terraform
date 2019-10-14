@@ -74,6 +74,8 @@ server_listen_port: "${server_listen_port}"
 setup_datasources: "${setup_datasources}"
 primary_db_host: "${primary_db_host}"
 database_url: "${database_url}"
+database_min_pool_size: "${database_min_pool_size}"
+database_max_pool_size: "${database_max_pool_size}"
 
 # NOMIS
 nomis_url: "${nomis_url}"

@@ -82,6 +82,8 @@ module "nomis" {
     setup_datasources        = "${local.ansible_vars["setup_datasources"]}"
     primary_db_host          = "${data.terraform_remote_state.database_failover.public_fqdn_nomis_db_1}"
     database_url             = "${data.terraform_remote_state.database_failover.jdbc_failover_url}"
+    database_min_pool_size   = "${local.ansible_vars["database_min_pool_size"]}"
+    database_max_pool_size   = "${local.ansible_vars["database_max_pool_size"]}"
 
     # NOMIS
     nomis_url                = "${local.ansible_vars["nomis_url"]}"

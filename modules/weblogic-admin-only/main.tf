@@ -39,6 +39,8 @@ data "template_file" "user_data" {
     setup_datasources        = "${var.ansible_vars["setup_datasources"]}"
     primary_db_host          = "${var.ansible_vars["primary_db_host"]}"
     database_url             = "${var.ansible_vars["database_url"]}"
+    database_min_pool_size   = "${var.ansible_vars["database_min_pool_size"]}"
+    database_max_pool_size   = "${var.ansible_vars["database_max_pool_size"]}"
 
     # NOMIS
     nomis_url                = "${var.ansible_vars["nomis_url"]}"
